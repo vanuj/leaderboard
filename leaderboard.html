@@ -2,149 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="script.js"></script>
-	<style>
-		/* CSS - Shea Parker */
-
-/********* BASE **********/
-*, *:before, *:after {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-body,html {
-    min-height:100%;
-}
-
-body{
-    background:#444;
-}
-
-.leaderboard {
-    position:relative;
-    width:70%;
-    height:70%;
-    max-width:960px;
-    min-width:400px;
-    min-height:600px;
-    margin: 10px auto 0 auto;
-}
-
-.leaderboard h1{
-    text-align: center;
-    text-transform: uppercase;
-    margin:30px;
-    padding:0;
-    color: #cc7713;
-}
-
-.content {
-    position:relative;
-    width:70%;
-    margin:3px auto 0 auto;
-    min-width:300px;
-
-}
-
-.content ul{
-    margin:0;
-    padding:0;
-    list-style: none;
-    border:5px solid #CCC;
-    background: rgba(40,40,40,0.75);
-}
-.content ul li{
-	display:inline-block;
-	text-align: centre;	
-    position: relative;
-    color:#FFF;
-    font-family: helvetica;
-    padding:2% 5%;
-	width:100%;
-    border-bottom: 1px solid #555;
-}
-.content ul li audio{padding:0}
-
-.content ul li:last-child{
-    border-bottom:none;
-}
-
-.name{
-    font-weight:bold;
-}
-
-.like{float:left; padding:0 10px}
-.play{display:block;margin-top:25px;}
-.count{
-    display:inline-block;
-    float:right;
-    color:#F00;
-    font-weight:bold;
-}
-.count:after{
-    content:' Likes';
-    color:#CCC;
-    font-size:80%;
-    font-weight:normal;
-}
-
-
-/********* BLING **********/
-.content ul{
-    border-radius: 20px;
-}
-
-.animate {
-    -moz-animation: flashIt 0.2s ease 1;
-    -webkit-animation: flashIt 0.2s ease 1;
-    animation: flashIt 0.2s ease 1;
-}
-
-.animate .countold{
-    -moz-animation: spinIt 0.3s ease 1;
-    -webkit-animation: spinIt 0.3s ease 1;
-    animation: spinIt 0.3s ease 1;
-}
-
-
-@-moz-keyframes flashIt {
-    100% { opacity: 0; background-color: #FFF;}
-}
-@-webkit-keyframes flashIt {
-    100% { opacity: 0; background-color: #FFF;}
-}
-@keyframes flashIt {
-    100% { opacity: 0; }
-}
-
-@-moz-keyframes spinIt {
-    20% {-moz-transform: rotate(-10deg)}
-    40% {-moz-transform: rotate(10deg)}
-    60% {-moz-transform: rotate(-10deg)}
-    80% {-moz-transform: rotate(10deg)}
-    100% {-moz-transform: rotate(-10deg)}
-}
-@-webkit-keyframes spinIt {
-    20% {-webkit-transform: rotate(-10deg)}
-    40% {-webkit-transform: rotate(10deg)}
-    60% {-webkit-transform: rotate(-10deg)}
-    80% {-webkit-transform: rotate(10deg)}
-    100% {-webkit-transform: rotate(-10deg)}
-}
-@keyframes spinIt {
-     20% {transform: rotate(-10deg)}
-     40% {transform: rotate(10deg)}
-     60% {transform: rotate(-10deg)}
-     80% {transform: rotate(10deg)}
-     100% {transform: rotate(-10deg)}
- }
-	</style>
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		
   </head>
   <body>
     <div class='leaderboard'>
-		<h1><span>Smarty's LeaderBoard</span></h1>
+		<h1><span>P.S. LeaderBoard</span></h1>
 		<div class="content"></div>
 	</div>
 	<script>
@@ -250,11 +116,12 @@ body{
 				.appendTo($ul);
 			this.list.push({
                $item: item,
-               $name: $('<span class="name">Loading...</span>').appendTo(item),
-               $count: $('<span class="count">Loading...</span>').appendTo(item),
-			   $heart: $('<span class="like"> + </span>').appendTo(item),
+               $name: $('<span class="name mt20">Loading...</span>').appendTo(item),
+               $count: $('<span class="count mt20">Loading...</span>').appendTo(item),
+			   $heart: $('<span class="like mt20"> <i class="fas fa-heart"></i> </span>').appendTo(item),
+			   $genre: $('<span class="genre mt20">Jazz</span>').appendTo(item),
 			   $heart: $('<div class="play"> <audio controls> <source src="abc.ogg" type="audio/ogg"><source src="http://www.largesound.com/ashborytour/sound/brobob.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></div>').appendTo(item),
-			   $download: $('<a class="download" > Download</a>').appendTo(item),
+			   // $download: $('<a href="http://www.largesound.com/ashborytour/sound/brobob.mp3" class="download" > Download</a>').appendTo(item),
 
            });
 		}
@@ -295,10 +162,11 @@ body{
 })(jQuery);
 
 $(document).ready(function ($) {
-	var myLeaderboard = new Leaderboard(".content", {limit:8,frequency:8});
+	var myLeaderboard = new Leaderboard(".content", {limit:8,frequency:80});
 });
 
 
 	</script>
+	<script src="script.js"></script>
   </body>
 </html>
